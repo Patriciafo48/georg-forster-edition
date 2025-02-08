@@ -10,6 +10,7 @@ body {
     line-height: 1.6;
     background-color: #f9f9f9;
     color: #333;
+    animation: fadeIn 1.5s ease;
 }
 
 .navbar {
@@ -30,11 +31,12 @@ body {
     color: white;
     text-decoration: none;
     padding: 8px 15px;
-    transition: background 0.3s;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .navbar a:hover {
     background: #555;
+    transform: scale(1.1);
 }
 
 header, main {
@@ -43,11 +45,20 @@ header, main {
     margin: 0 auto;
 }
 
-#mapContainer {
-    height: 500px;
-    width: 100%;
-    margin: 20px auto;
-    border: 2px solid #ddd;
+header {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeInText 2s forwards;
+}
+
+@keyframes fadeInText {
+    to {
+        opacity: 1;
+    }
 }
 
 footer {
@@ -55,12 +66,18 @@ footer {
     background: #333;
     color: white;
     padding: 10px 0;
+    margin-top: 30px;
+}
+
+p {
+    margin: 10px 0;
 }
 
 h1, h2 {
     color: #444;
 }
 
-p {
-    margin: 10px 0;
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
