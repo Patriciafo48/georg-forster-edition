@@ -6,4 +6,10 @@ window.addEventListener('load', () => {
     });
 });
 
-// Navigationsanimation (optional zukünftig Erweiterungen)
+// Scroll zu Sektionen
+const ctaButton = document.querySelector('.cta-button');
+if (ctaButton) {
+    ctaButton.addEventListener('click', () => {
+        window.location.href = 'about.html';
+    });
+}
