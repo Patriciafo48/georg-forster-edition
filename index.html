@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Georg Forster - Digitale Edition</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="styles.css">
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
     <!-- Navigationsleiste -->
@@ -23,26 +31,57 @@
         <h1>Willkommen zur digitalen Edition von Georg Forster</h1>
         <p>Erkunde seine Reiseberichte auf interaktive und innovative Weise!</p>
     </section>
+    
     <section id="about">
         <h2>Über Georg Forster</h2>
-        <p>Hier kommt eine kurze Biographie über Georg Forster.</p>
+        <p>Georg Forster (1754–1794) war ein deutscher Naturforscher, Ethnologe und Revolutionär. Bekannt wurde er durch seine Reisen mit James Cook und seine bedeutenden Reiseberichte.</p>
     </section>
+
     <section id="transcriptions">
         <h2>Transkriptionen</h2>
-        <p>Hier werden die Reiseberichte dargestellt.</p>
+        <p>Hier werden die Reiseberichte in transkribierter Form dargestellt.</p>
     </section>
+
     <section id="map">
         <h2>Interaktive Karte</h2>
-        <p>Hier wird eine interaktive Karte angezeigt.</p>
+        <div id="mapContainer"></div>
     </section>
+
     <section id="project">
         <h2>Über das Projekt</h2>
-        <p>Details über die digitale Edition.</p>
+        <p>Dieses Projekt präsentiert digitale Editionen von Georg Forsters Reiseberichten, inklusive interaktiver Karten und umfassender Metadaten.</p>
     </section>
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2025 Digitale Edition Georg Forster</p>
     </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Smooth Scroll für Navigation
+        document.querySelectorAll('.navbar a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                document.getElementById(targetId).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Initialisierung der Karte
+        const map = L.map('mapContainer').setView([51.1657, 10.4515], 6); // Deutschland zentriert
+
+        // OpenStreetMap Layer hinzufügen
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Beispiel-Marker hinzufügen (Berlin)
+        L.marker([52.5200, 13.4050]).addTo(map)
+            .bindPopup('Georg Forster in Berlin')
+            .openPopup();
+    </script>
 </body>
 </html>
